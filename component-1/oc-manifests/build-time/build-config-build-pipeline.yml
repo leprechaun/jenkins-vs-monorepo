@@ -8,8 +8,8 @@ spec:
     type: Git
     git:
       uri: https://github.com/leprechaun/jenkins-vs-monorepo
-    contextDir: component-1/
   strategy:
     type: JenkinsPipeline
     jenkinsPipelineStrategy:
+      contextDir: component-1/
       jenkinsfilePath: ./pipelines/build/Jenkinsfile
