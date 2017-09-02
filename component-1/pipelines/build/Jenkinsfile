@@ -1,6 +1,7 @@
 def getGitCommit() {
-  sh(returnStdout: true, 'git rev-parse --abbrev-ref HEAD').trim().take(6)
+  return sh(returnStdout: true, 'git rev-parse --abbrev-ref HEAD').trim().take(6)
 }
+
 pipeline {
   agent any
 
