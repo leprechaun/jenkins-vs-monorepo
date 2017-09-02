@@ -41,11 +41,11 @@ pipeline {
     stage("Deployment"){
       steps {
         sh "env"
-        build( job: "myproject-component-1-deploy-pipeline", wait: true)
+/*        build( job: "myproject-component-1-deploy-pipeline", wait: true)
         openshiftBuild(
           buildName: "component-1-deploy-pieline",
           commitID: "${env.GIT_COMMIT}"
-        )
+        )*/
       }
     }
   }
