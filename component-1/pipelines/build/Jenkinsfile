@@ -1,0 +1,27 @@
+pipeline {
+  agent any
+
+  stages {
+    stage("Apply OC Build-Time things") {
+      steps {
+        echo "oc apply -f oc-manifests/build-time/"
+      }
+    }
+
+    stage('Tests') {
+      steps {
+        parallel (
+          "Unit Tests": {
+            echo 'done'
+          },
+          "Function Tests": {
+            echo 'done'
+          },
+          "Urine Tests": {
+            sh "cat Jenkinsfile"
+          }
+        )
+      }
+    }
+  }
+}

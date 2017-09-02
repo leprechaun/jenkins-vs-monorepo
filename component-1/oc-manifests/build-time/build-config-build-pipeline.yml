@@ -1,0 +1,15 @@
+kind: "BuildConfig"
+apiVersion: "v1"
+metadata:
+  name: component-1-build-pipeline
+spec:
+  runPolicy: Parallel
+  source:
+    type: Git
+    git:
+      uri: https://github.com/leprechaun/jenkins-vs-monorepo
+    contextDir: component-1/
+  strategy:
+    type: JenkinsPipeline
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: ./pielines/build/Jenkinsfile
