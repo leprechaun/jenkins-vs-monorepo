@@ -49,7 +49,7 @@ pipeline {
         openshiftBuild(
           bldCfg: "component-1-deploy-pipeline",
           commitID: getGitCommit(),
-          showBuildLogs: true
+          showBuildLogs: "true"
         )
       }
     }
