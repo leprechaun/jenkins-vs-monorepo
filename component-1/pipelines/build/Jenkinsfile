@@ -44,8 +44,6 @@ pipeline {
 
     stage("Deployment"){
       steps {
-        sh "env"
-        echo getGitCommit()
         openshiftBuild(
           bldCfg: "component-1-deploy-pipeline",
           commitID: getGitCommit(),
