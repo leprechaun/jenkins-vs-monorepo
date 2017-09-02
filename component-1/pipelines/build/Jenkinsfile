@@ -38,5 +38,11 @@ pipeline {
         )
       }
     }
+
+    stage("Deployment"){
+      steps {
+        build "component-1-deploy-pipeline"
+      }
+    }
   }
 }
