@@ -48,7 +48,8 @@ pipeline {
         echo getGitCommit()
         openshiftBuild(
           bldCfg: "component-1-deploy-pipeline",
-          commitID: getGitCommit()
+          commitID: getGitCommit(),
+          showBuildLogs: true
         )
       }
     }
