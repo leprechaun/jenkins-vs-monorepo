@@ -33,7 +33,6 @@ pipeline {
             dir("component-1") {
               sh "cat pipelines/build/Jenkinsfile"
             }
-
           }
         )
       }
