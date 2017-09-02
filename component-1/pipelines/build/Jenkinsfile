@@ -41,7 +41,7 @@ pipeline {
 
     stage("Deployment"){
       steps {
-        build "component-1-deploy-pipeline"
+        build "myproject-component-1-build-pipeline"
       }
     }
   }
