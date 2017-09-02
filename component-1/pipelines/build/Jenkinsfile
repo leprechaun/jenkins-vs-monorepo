@@ -1,6 +1,5 @@
 def getGitCommit() {
-  def git_commit = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim().take(6)
-  return git_commit
+  return sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
 }
 
 pipeline {
