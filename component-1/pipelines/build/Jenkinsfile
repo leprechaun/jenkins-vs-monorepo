@@ -40,7 +40,8 @@ pipeline {
 
     stage("Deployment"){
       steps {
-        build( job: "myproject-component-1-deploy-pipeline", wait: true)
+        def ret = build( job: "myproject-component-1-deploy-pipeline", wait: true)
+        echo ret
       }
     }
   }
