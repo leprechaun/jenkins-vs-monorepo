@@ -1,5 +1,5 @@
 def getGitCommit() {
-  return sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+  return sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(8)
 }
 
 pipeline {
@@ -46,11 +46,10 @@ pipeline {
       steps {
         sh "env"
         echo getGitCommit()
-/*        build( job: "myproject-component-1-deploy-pipeline", wait: true)
         openshiftBuild(
-          buildName: "component-1-deploy-pieline",
-          commitID: "${env.GIT_COMMIT}"
-        )*/
+          buildName: "component-1-deploy-pipeline",
+          commitID: getGitCommit()
+        )
       }
     }
   }
