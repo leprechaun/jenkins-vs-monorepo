@@ -3,8 +3,8 @@ pipeline {
 
   stages {
     stage("Apply OC Build-Time things") {
-      dir("component-1") {
-        steps {
+      steps {
+        dir("component-1") {
           echo "oc apply -f oc-manifests/build-time/"
           sh "ls"
           sh "pwd"
