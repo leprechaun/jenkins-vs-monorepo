@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  triggers {
+    pollSCM('* * * * *')
+  }
+
   stages {
     stage("Apply OC Build-Time things") {
       steps {
@@ -14,19 +18,17 @@ pipeline {
 
     stage('Tests') {
       steps {
-        dir("component-1") {
-          parallel (
-            "Unit Tests": {
-              echo 'done'
-            },
-            "Function Tests": {
-              echo 'done'
-            },
-            "Urine Tests": {
-              sh "cat pipelines/build/Jenkinsfile"
-            }
-          )
-        }
+        parallel (
+          "Unit Tests": {
+            echo 'done'
+          },
+          "Function Tests": {
+            echo 'done'
+          },
+          "Urine Tests": {
+            sh "cat pipelines/build/Jenkinsfile"
+          }
+        )
       }
     }
   }
