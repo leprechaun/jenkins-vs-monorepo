@@ -5,6 +5,8 @@ pipeline {
     stage("Apply OC Build-Time things") {
       steps {
         echo "oc apply -f oc-manifests/build-time/"
+        sh "ls"
+        sh "pwd"
       }
     }
 
