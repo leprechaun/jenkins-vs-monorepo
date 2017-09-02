@@ -47,7 +47,7 @@ pipeline {
         sh "env"
         echo getGitCommit()
         openshiftBuild(
-          buildName: "component-1-deploy-pipeline",
+          bldCfg: "component-1-deploy-pipeline",
           commitID: getGitCommit()
         )
       }
