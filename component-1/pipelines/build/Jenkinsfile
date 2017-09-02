@@ -40,7 +40,7 @@ pipeline {
 
     stage("Deployment"){
       steps {
-        build "myproject-component-1-deploy-pipeline", wait: true
+        build("myproject-component-1-deploy-pipeline", wait: true)
       }
     }
   }
