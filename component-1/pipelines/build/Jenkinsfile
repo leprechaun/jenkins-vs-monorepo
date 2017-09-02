@@ -40,10 +40,12 @@ pipeline {
 
     stage("Deployment"){
       steps {
-        echo "$env.GIT_COMMIT}"
-        echo "$env.GIT_BRANCH}"
+        sh "env"
         build( job: "myproject-component-1-deploy-pipeline", wait: true)
-        echo "hello world"
+        openshiftBuild(
+          buildName: "component-1-deploy-pieline",
+          commitID: "${env.GIT_COMMIT}"
+        )
       }
     }
   }
