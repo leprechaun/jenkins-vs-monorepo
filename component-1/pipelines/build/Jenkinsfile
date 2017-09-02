@@ -14,17 +14,19 @@ pipeline {
 
     stage('Tests') {
       steps {
-        parallel (
-          "Unit Tests": {
-            echo 'done'
-          },
-          "Function Tests": {
-            echo 'done'
-          },
-          "Urine Tests": {
-            sh "cat pipelines/build/Jenkinsfile"
-          }
-        )
+        dir("component-1") {
+          parallel (
+            "Unit Tests": {
+              echo 'done'
+            },
+            "Function Tests": {
+              echo 'done'
+            },
+            "Urine Tests": {
+              sh "cat pipelines/build/Jenkinsfile"
+            }
+          )
+        }
       }
     }
   }
