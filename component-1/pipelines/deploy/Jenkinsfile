@@ -1,0 +1,38 @@
+pipeline {
+  agent any
+
+  stages {
+    stage("Do something") {
+      steps {
+        dir("component-1") {
+          echo "oc apply -f oc-manifests/build-time/"
+          sh "ls"
+          sh "pwd"
+        }
+      }
+    }
+
+    stage('Tests') {
+      steps {
+        parallel (
+          "Unit Tests": {
+            dir("component-1") {
+              echo 'done'
+            }
+          },
+          "Function Tests": {
+            dir("component-1") {
+              echo 'done'
+            }
+          },
+          "Urine Tests": {
+            dir("component-1") {
+              sh "cat pipelines/build/Jenkinsfile"
+            }
+
+          }
+        )
+      }
+    }
+  }
+}
