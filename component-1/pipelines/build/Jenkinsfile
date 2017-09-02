@@ -1,32 +1,31 @@
 pipeline {
   agent any
 
-    stages {
-      cd("component-1"){
-        stage("Apply OC Build-Time things") {
-          steps {
-            echo "oc apply -f oc-manifests/build-time/"
-            sh "ls"
-            sh "pwd"
-          }
+  stages {
+    stage("Apply OC Build-Time things") {
+      dir("component-1") {
+        steps {
+          echo "oc apply -f oc-manifests/build-time/"
+          sh "ls"
+          sh "pwd"
         }
+      }
+    }
 
-        stage('Tests') {
-          steps {
-            parallel (
-              "Unit Tests": {
-                echo 'done'
-              },
-              "Function Tests": {
-                echo 'done'
-              },
-              "Urine Tests": {
-                sh "cat pipelines/build/Jenkinsfile"
-              }
-            )
+    stage('Tests') {
+      steps {
+        parallel (
+          "Unit Tests": {
+            echo 'done'
+          },
+          "Function Tests": {
+            echo 'done'
+          },
+          "Urine Tests": {
+            sh "cat pipelines/build/Jenkinsfile"
           }
-        }
+        )
+      }
     }
   }
-
 }
