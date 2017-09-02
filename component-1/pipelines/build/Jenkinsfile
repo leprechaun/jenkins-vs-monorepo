@@ -20,13 +20,20 @@ pipeline {
       steps {
         parallel (
           "Unit Tests": {
-            echo 'done'
+            dir("component-1") {
+              echo 'done'
+            }
           },
           "Function Tests": {
-            echo 'done'
+            dir("component-1") {
+              echo 'done'
+            }
           },
           "Urine Tests": {
-            sh "cat pipelines/build/Jenkinsfile"
+            dir("component-1") {
+              sh "cat pipelines/build/Jenkinsfile"
+            }
+
           }
         )
       }
