@@ -27,7 +27,7 @@ pipeline {
           },
           "Urine Tests": {
             dir("component-1") {
-              sh "cat pipelines/build/Jenkinsfile"
+              sh "false"
             }
 
           }
